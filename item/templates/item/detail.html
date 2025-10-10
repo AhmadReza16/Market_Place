@@ -1,0 +1,61 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ item.name }}{% endblock %}
+
+{% block content %}
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="lg:col-span-2 bg-white rounded-xl shadow-sm overflow-hidden">
+        <div class="bg-gray-100 flex items-center justify-center">
+            <img src="{{ item.image.url }}" class="w-full max-h-96 object-contain">
+        </div>
+    </div>
+
+    <aside class="p-6 bg-white rounded-xl shadow-sm">
+        <h1 class="mb-4 text-2xl font-bold text-gray-800">{{ item.name }}</h1>
+
+        <div class="space-y-3">
+            <p class="text-gray-600"><span class="font-semibold">Price:</span> <span class="text-teal-600 font-bold">{{ item.price }}</span></p>
+            <p class="text-gray-600"><span class="font-semibold">Seller:</span> {{ item.created_by.username }}</p>
+
+            {% if item.description %}
+                <div class="mt-4 text-gray-700">
+                    <h3 class="text-sm font-semibold text-gray-600">Description</h3>
+                    <p class="mt-2 text-sm">{{ item.description }}</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="mt-6 flex gap-3">
+            {% if request.user == item.created_by %}
+                <a href="{% url 'item:edit' item.id %}" class="inline-flex items-center px-4 py-2 rounded-md text-sm font-medium bg-teal-600 text-white hover:bg-teal-700">Edit</a>
+                <a href="{% url 'item:delete' item.id %}" class="inline-flex items-center px-4 py-2 rounded-md text-sm font-medium bg-red-600 text-white hover:bg-red-700">Delete</a>
+            {% else %}
+                <a href="{% url 'conversation:new' item.id %}" class="inline-flex items-center px-4 py-2 rounded-md text-sm font-medium bg-teal-600 text-white hover:bg-teal-700">Contact seller</a>
+            {% endif %}
+        </div>
+    </aside>
+</div>
+
+<section class="mt-8">
+    <div class="bg-white rounded-xl p-6 shadow-sm">
+        <h2 class="mb-6 text-xl font-semibold text-gray-800 text-center">Related items</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for item in related_items %}
+                <article class="bg-gray-50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+                    <a href="{% url 'item:detail' item.id %}" class="block">
+                        <div class="h-40 bg-gray-100">
+                            <img src="{{ item.image.url }}" class="w-full h-full object-cover">
+                        </div>
+
+                        <div class="p-4">
+                            <h3 class="text-md font-medium text-gray-800">{{ item.name }}</h3>
+                            <p class="mt-1 text-sm text-gray-500">Price: <span class="text-teal-600">{{ item.price }}</span></p>
+                        </div>
+                    </a>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
