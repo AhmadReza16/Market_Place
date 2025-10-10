@@ -1,68 +1,85 @@
 # Market Place Django Project
 
-یک پروژه Django برای بازار آنلاین که کاربران می‌توانند کالاهای خود را به فروش بگذارند.
+A Django-based online marketplace where users can register, list items for sale, browse categories, search products, and communicate via messaging.
 
-## ویژگی‌ها
+## Features
 
-- ثبت‌نام و ورود کاربران
-- ایجاد و مدیریت کالاها
-- دسته‌بندی کالاها
-- جستجو در کالاها
-- داشبورد شخصی
-- سیستم پیام‌رسانی
-- آپلود تصاویر
+- User registration and authentication
+- Create, edit, and manage items
+- Item categorization
+- Search functionality
+- Personal dashboard
+- Messaging system between users
+- Image upload for items
 
-## نصب و راه‌اندازی
+## Installation & Setup
 
-1. کلون کردن پروژه:
-```bash
-git clone <repository-url>
-cd market
-```
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd market
+   ```
 
-2. ایجاد virtual environment:
-```bash
-python -m venv venv
-source venv/bin/activate  # در Windows: venv\Scripts\activate
-```
+2. **Create a virtual environment:**
+   ```bash
+   python -m venv venv
+   # On Windows:
+   venv\Scripts\activate
+   # On Linux/macOS:
+   source venv/bin/activate
+   ```
 
-3. نصب dependencies:
-```bash
-pip install -r requirements.txt
-```
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-4. اجرای migrations:
-```bash
-python manage.py migrate
-```
+4. **Apply migrations:**
+   ```bash
+   python manage.py migrate
+   ```
 
-5. ایجاد superuser:
-```bash
-python manage.py createsuperuser
-```
+5. **Create a superuser:**
+   ```bash
+   python manage.py createsuperuser
+   ```
 
-6. اجرای سرور:
-```bash
-python manage.py runserver
-```
+6. **Run the development server:**
+   ```bash
+   python manage.py runserver
+   ```
 
-## ساختار پروژه
+----
+## 📸 Screenshots
 
-- `core/`: صفحات اصلی و احراز هویت
-- `item/`: مدیریت کالاها
-- `dashboard/`: داشبورد کاربری
-- `conversation/`: سیستم پیام‌رسانی
+<img width="1349" height="1979" alt="Screenshot 2025-10-10 at 20-03-09 Welcome Market" src="https://github.com/user-attachments/assets/00763ec1-b17d-4237-91fc-717a40d89c2e" />
 
-## تکنولوژی‌های استفاده شده
+---
+
+
+<img width="1349" height="1141" alt="Screenshot 2025-10-10 at 20-03-43 Brown shoes Market" src="https://github.com/user-attachments/assets/2d25c72c-6152-41c3-b228-386918467fd8" />
+
+---
+
+<img width="1349" height="1297" alt="Screenshot 2025-10-10 at 20-12-13 Items Market" src="https://github.com/user-attachments/assets/4e3d7363-68fc-4c26-85f9-e7f1ce49dbb9" />
+
+## Project Structure
+
+- `core/` — Main pages and authentication
+- `item/` — Item management
+- `dashboard/` — User dashboard
+- `conversation/` — Messaging system
+
+## Technologies Used
 
 - Django 5.2.7
-- Pillow (برای پردازش تصاویر)
-- SQLite (پایگاه داده پیش‌فرض)
-- Tailwind CSS (برای استایل)
+- Pillow (image processing)
+- SQLite (default database)
+- Tailwind CSS (styling)
 
-## نکات مهم
+## Important Notes
 
-- فایل‌های تصویر در پوشه `media/item_images/` ذخیره می‌شوند
-- در حالت DEBUG، فایل‌های static و media به صورت خودکار سرو می‌شوند
-- برای production، باید `DEBUG = False` و `ALLOWED_HOSTS` را تنظیم کنید
+- Uploaded images are stored in `media/item_images/`
+- In DEBUG mode, static and media files are served automatically
+- For production, set `DEBUG = False` and configure `ALLOWED_HOSTS` appropriately
 
