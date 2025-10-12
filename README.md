@@ -39,15 +39,19 @@ A Django-based online marketplace where users can register, list items for sale,
    python manage.py migrate
    ```
 
-5. **Create a superuser:**
-   ```bash
-   python manage.py createsuperuser
-   ```
 
-6. **Run the development server:**
+5. **Run the development server:**
    ```bash
    python manage.py runserver
    ```
+
+----
+User:
+admin
+
+
+🔐password:
+abcd1234
 
 ----
 ## 📸 Screenshots
